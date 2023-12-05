@@ -1,0 +1,10 @@
+<object class="PersonalInformation" package="com.atlassian.confluence.user">
+<id name="id">16127228</id>
+<property name="hibernateVersion">1</property>
+<property name="title"/><property name="lowerTitle"/><property name="version">1</property>
+<property name="creationDate">2021-11-22 12:02:01.798</property>
+<property name="lastModificationDate">2021-11-22 12:02:01.798</property>
+<property name="versionComment"><![CDATA[😁😁😁😁😁😁😁😁🤣🤣🤣🤣🤣🤣🤣😝😝😝]></property>
+<property name="contentStatus"><![CDATA[current]]></property>
+<property name="user" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key"><![CDATA[40288c7b7c5fb99c017d45ced1bd0003]]></id>
+</property>
