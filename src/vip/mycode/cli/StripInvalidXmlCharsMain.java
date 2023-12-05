@@ -63,7 +63,7 @@ public class StripInvalidXmlCharsMain
 
         String inputFilePath = args[0];
         String outputFilePath = null;
-        if (argc == 2) {
+        if (argc >= 2) {
             outputFilePath = args[1];
         }
 
@@ -85,7 +85,6 @@ public class StripInvalidXmlCharsMain
             }
 
             System.out.println("Done.");
-            System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
