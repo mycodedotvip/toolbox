@@ -35,9 +35,10 @@ public class StripInvalidXmlCharsMain
         
         try {
             String line;
-            while ((line = reader.readLine())!= null) {
+            while ((line = reader.readLine()) != null) {
                 writer.println(stripHandler.stripInvalidChars(line));
             }
+            
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,23 +48,28 @@ public class StripInvalidXmlCharsMain
     }
 
     
-    public static void main(String[] args) throws IOException
-    {
+    /**
+     * 主函数
+     *
+     * @param args 命令行参数
+     * @throws IOException 输入输出异常
+     */
+    public static void main(String[] args) throws IOException {
         int argc = args.length;
         if (argc < 1 || argc > 2) {
             System.err.println("usage: INPUT_XML_PATH [OUTPUT_XML_PATH]");
             System.exit(-1);
         }
-    
+
         String inputFilePath = args[0];
         String outputFilePath = null;
         if (argc == 2) {
             outputFilePath = args[1];
         }
-    
+
         BufferedReader reader = null;
         PrintWriter writer = null;
-        
+
         try {
             reader = new BufferedReader(new FileReader(inputFilePath));
             if (outputFilePath != null) {
@@ -71,10 +77,15 @@ public class StripInvalidXmlCharsMain
             } else {
                 writer = new PrintWriter(System.out);
             }
-            
-            doStrip(reader,
-                    writer,
-                    new StripInvalidXmlChars());
+
+            boolean ret = doStrip(reader, writer, new StripInvalidXmlChars());
+            if (!ret) {
+                System.err.println("Failed to strip invalid XML chars.");
+                System.exit(-1);
+            }
+
+            System.out.println("Done.");
+            System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -86,6 +97,7 @@ public class StripInvalidXmlCharsMain
             }
         }
     }
+
 }
 
 
