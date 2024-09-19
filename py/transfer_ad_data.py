@@ -1,5 +1,6 @@
 import pandas as pd
 import sys
+import time
 
 # 读取CSV文件
 df = pd.read_csv(sys.argv[1])
@@ -18,7 +19,9 @@ last_column_transposed = df_sorted.iloc[:, -1].to_numpy().T
 df_transposed = pd.DataFrame([last_column_transposed])
 
 # 输出到新的CSV文件
-df_transposed.to_csv('transposed_output.csv', index=False, header=False)
+timestamp = int(time.time())
+output_filename = f"out_{timestamp}.csv"
+df_transposed.to_csv(output_filename, index=False, header=False)
 
-print("转置后的最后一列已保存到 transposed_output.csv 文件中。")
+print(f"转置后的最后一列已保存到 {output_filename} 文件中。")
 
