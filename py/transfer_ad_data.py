@@ -24,4 +24,4 @@ output_filename = f"out_{timestamp}.csv"
 df_transposed.to_csv(output_filename, index=False, header=False)
 
 print(f"转置后的最后一列已保存到 {output_filename} 文件中。")
-
+print('\t'.join(map(str,last_column_transposed)))
