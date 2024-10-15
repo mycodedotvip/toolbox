@@ -16,7 +16,7 @@ def extract_parts(s):
     # prefix: wo_kao_
     # middle: 3.1415
     # suffix: .pdf
-    match = re.match(r'(.*_)(\w+)\.([^.]+)', s)
+    match = re.match(r'([\D]*)([\d.]+)(\.[^.]+)', s)
     if match:
         prefix = match.group(1)
         middle = match.group(2)
@@ -31,7 +31,9 @@ if __name__ == "__main__":
     if path is None:
         exit(-1)
 
+    total = 0.0
     for root, _, files in os.walk(path):
+        total_root = 0.0
         for filename in files:
             if filename.startswith('.'):
                 continue
@@ -41,6 +43,10 @@ if __name__ == "__main__":
                 print(f"NOT MATCH in DIR: {root}/{filename}")
                 continue
             print(f"HIT in DIR - {root}/{filename}\n\tprefix:{p}\n\tmiddle:{m}\n\tsuffix:{s}")
-
+            if m.isdigit():
+                total += float(m)
+                total_root += float(m)
+        print(f"TOTAL_ROOT {root} - {total_root}")
+    print(f"TOTAL ALL {root} - {total}")
     print("TASK DONE!")
     exit(0)
